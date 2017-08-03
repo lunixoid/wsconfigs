@@ -1,0 +1,2 @@
+# wsconfigs
+Workstation environment configs
