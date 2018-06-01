@@ -1,0 +1,29 @@
+[gui]
+	encoding = utf-8
+[alias]
+	last = log -1 HEAD
+	st = status
+	shorty = status --short --branch
+	unstage = reset HEAD --
+	up = !(git add . && git stash && git pull --rebase >&2) | grep -v \"No local changes to save\" && git stash pop
+	in = "!git remote update -p; git log ..@{u}"
+	out = log @{u}..
+	addremove = !git add . && git ls-files --deleted | xargs --no-run-if-empty git rm
+	backup = !file=../`git describe`.tar && echo \"Creating `readlink -f $file`\" && tar cf $file .
+	ci = commit
+	co = checkout
+	br = branch
+	bra = branch -a
+	chp = cherry-pick
+	pr = pull --rebase
+	please = push --force-with-lease
+	bl = blame -b -w
+	cia = commit --amend
+	commend = commit --amend --no-edit
+	lg = log --pretty=format:'%h was %an, %ar, message: %s' --graph
+	who = shortlog -s --
+	gr = "log --all --graph --pretty=format:'%Cred%h%Creset%x09%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+	gha = "log --graph --date=relative --all --topo-order --pretty=format:'%C(cyan)[%an]%Creset %C(green bold)%d%Creset %C(yellow)%h%Creset : %s %C(cyan)[%ad]%Creset'"
+[color]
+    ui = true
+
